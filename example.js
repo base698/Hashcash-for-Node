@@ -10,4 +10,5 @@ app.get('/unprotected',function(req,res) {
 	res.send('You should use protection.');
 });
 
+console.log("Listening...");
 app.listen(1337);
