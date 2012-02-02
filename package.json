@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "HashCash protocol for Node",
   "author": ["Justin Thomas <justin.thomas1@gmail.com>"],
-  "scripts": {
-    "test": "node test/test.js"
-  },
   "main":"./lib/hashcash",
   "dependencies": {
 	 "underscore":"1.2.x",
@@ -13,7 +10,7 @@
   },
   "repository": {
 		"type": "git",
-		"url" : "https://github.com/base698/hashcash"
+		"url" : "https://github.com/base698/Hashcash-for-Node"
   },
   "devDependencies": {
   },
