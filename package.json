@@ -1,0 +1,22 @@
+{
+  "name": "hashcash",
+  "version": "0.1.0",
+  "description": "HashCash protocol for Node",
+  "author": ["Justin Thomas <justin.thomas1@gmail.com>"],
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "main":"./lib/hashcash",
+  "dependencies": {
+	 "underscore":"1.2.x",
+    "express": ">=2.5.2"
+  },
+  "repository": {
+		"type": "git",
+		"url" : "https://github.com/base698/hashcash"
+  },
+  "devDependencies": {
+  },
+  "engine": "node 0.6.x"
+}
+
