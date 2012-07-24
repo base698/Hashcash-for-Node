@@ -1,11 +1,11 @@
 {
   "name": "hashcash",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "HashCash protocol for Node",
   "author": ["Justin Thomas <justin.thomas1@gmail.com>"],
   "main":"./lib/hashcash",
   "dependencies": {
-
+	 "restler":"2.0.x"	
   },
   "repository": {
 		"type": "git",
@@ -14,6 +14,6 @@
   "devDependencies": {
 		"express": ">=2.5.2"
   },
-  "engine": "node 0.6.x"
+  "engine": "node 0.8.x"
 }
 
