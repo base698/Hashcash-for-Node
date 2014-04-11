@@ -1,0 +1,47 @@
+var hashcash = require('../lib/hashcash');
+var assert = require('assert');
+
+describe('hash cash', function() {
+  it('gets challenge for url', function(done) {
+      var challenge = hashcash.getChallenge('123aaa');
+      assert.ok(challenge.indexOf('123aaa') != -1);
+      done();
+  });
+  it('solves a challenge', function(done) {
+    var challenge = hashcash.getChallenge('123aaa');
+    var nonce = hashcash.solveChallenge(challenge);
+    assert.ok(hashcash.isSolution(challenge, nonce));
+    done();
+  });
+
+  it('issues challenge on new request', function(done) {
+    var req = {url: '/123', headers: {}, session: {}};
+    var res = { 
+      header: function(k, v) {},
+      send: function(str, status) {
+        assert.ok( status === 400 );
+        done();
+      }
+    };
+    hashcash.middleware()(req, res, function() { });
+  });
+
+  it('allows access for solution to challenge', function(done) {
+    var challenge;
+    var req = {url: '/123', headers: {}, session: {}};
+    var res = { 
+      header: function(k, v) {challenge = v;},
+      send: function(str, status) {
+      }
+    };
+
+    hashcash.middleware()(req, res, function() { });
+
+    var solution = hashcash.solveChallenge(challenge);
+    var solutionReq = {url: '/123', headers: {'X-hashcash-solution': solution}, session: {'X-hashcash': challenge}};
+    hashcash.middleware()(solutionReq, res, function() { 
+      done(); 
+    });
+  });
+
+});
