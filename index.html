@@ -5,18 +5,18 @@
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 	</script>
-	<script src="lib/hashcash-jquery-client.js">
-	</script>
+	<script src="lib/hashcash.js"></script>
+  <script src="lib/hashcash-jquery-client.js"></script>
 	<script>
 		$(document).ready(function() {
       var msg = document.getElementById('msg');
       var start = new Date().getTime(); 
       msg.innerHTML = 'Getting request through hashcash';
-			hashcash.ajax({
+			HashCash.ajax({
 				url: '/protected',
 				success:function(responseText) {
-          var time = new Date.getTime() - start;
-          msg.innerHTML = 'Server Says: ' + responseText + ' took ' + time;
+          var time = new Date().getTime() - start;
+          msg.innerHTML = 'Server Says: ' + responseText + ' took ' + time + 'ms';
 				}
 			});
 		});
