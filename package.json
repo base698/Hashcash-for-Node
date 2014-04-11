@@ -12,7 +12,7 @@
 		"url" : "https://github.com/base698/Hashcash-for-Node"
   },
   "devDependencies": {
-		"express": ">=2.5.2"
+		"express": "3.x.x"
   },
   "engine": "node 0.8.x"
 }
