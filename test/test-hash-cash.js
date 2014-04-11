@@ -7,6 +7,7 @@ describe('hash cash', function() {
       assert.ok(challenge.indexOf('123aaa') != -1);
       done();
   });
+
   it('solves a challenge', function(done) {
     var challenge = hashcash.getChallenge('123', '123aaa');
     var nonce = hashcash.solveChallenge(challenge);
@@ -46,12 +47,6 @@ describe('hash cash', function() {
     var solution = hashcash.solveChallenge(challenge);
     var solutionReq = {url: '/123', connection: {remoteAddress: 1}, headers: {'x-hashcash-solution': solution}, session: {'x-hashcash': challenge}};
     hashcash.middleware()(solutionReq, res, function() { throw 'shouldnt hit' });
-  });
-
-  it('should get solutions for nounce and key', function(done) {
-    var solution = hashcash.isSolution('1eec8a5c2:1455300cc03:127.0.0.1:%2Fprotected:', 8301123093);
-    assert.ok(solution);
-    done();
   });
 
   it('allows access for solution to challenge', function(done) {
