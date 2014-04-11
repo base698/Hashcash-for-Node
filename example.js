@@ -13,6 +13,6 @@ app.get('/unprotected',function(req,res) {
 	res.send('You should use protection.');
 });
 
-var port = 1337;
+var port = 8000;
 console.log("Listening on: " + port);
 app.listen(port);

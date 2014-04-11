@@ -63,7 +63,6 @@ describe('hash cash', function() {
     var solution = hashcash.solveChallenge(challenge);
     var solutionReq = {url: '/123', connection: {remoteAddress: 123}, headers: {'X-hashcash-solution': solution}, session: {'X-hashcash': challenge}};
     hashcash.middleware()(solutionReq, res, function() { 
-      console.log(solution);
       done(); 
     });
   });
