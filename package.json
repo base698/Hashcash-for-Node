@@ -2,18 +2,19 @@
   "name": "hashcash",
   "version": "0.5.1",
   "description": "HashCash protocol for Node",
-  "author": ["Justin Thomas <justin.thomas1@gmail.com>"],
-  "main":"./lib/hashcash",
+  "author": [
+    "Justin Thomas <justin.thomas1@gmail.com>"
+  ],
+  "main": "./lib/hashcash",
   "dependencies": {
-	 "restler":"2.0.x"	
+    "restler": "~3.2.0"
   },
   "repository": {
-		"type": "git",
-		"url" : "https://github.com/base698/Hashcash-for-Node"
+    "type": "git",
+    "url": "https://github.com/base698/Hashcash-for-Node"
   },
   "devDependencies": {
-		"express": "3.x.x"
+    "express": "3.x.x"
   },
   "engine": "node 0.8.x"
 }
-
