@@ -11,6 +11,7 @@ describe('hash cash', function() {
   it('solves a challenge', function(done) {
     var challenge = hashcash.getChallenge('123', '123aaa');
     var nonce = hashcash.solveChallenge(challenge);
+    assert.ok(!hashcash.isSolution(challenge, nonce-12));
     assert.ok(hashcash.isSolution(challenge, nonce));
     done();
   });
@@ -27,7 +28,7 @@ describe('hash cash', function() {
     hashcash.middleware()(req, res, function() { });
   });
 
-  it('denies access for solution with different remoteAddress', function(done) {
+  it('denies access for solution with different signature', function(done) {
     var challenge;
     var calls = 0;
     var req = {url: '/123', connection: {remoteAddress: 123}, headers: {}, session: {}};
@@ -43,8 +44,8 @@ describe('hash cash', function() {
     };
 
     hashcash.middleware()(req, res, function() { });
-
     var solution = hashcash.solveChallenge(challenge);
+    challenge = challenge.replace(/^.+:/,'1412312:');
     var solutionReq = {url: '/123', connection: {remoteAddress: 1}, headers: {'x-hashcash-solution': solution}, session: {'x-hashcash': challenge}};
     hashcash.middleware()(solutionReq, res, function() { throw 'shouldnt hit' });
   });
